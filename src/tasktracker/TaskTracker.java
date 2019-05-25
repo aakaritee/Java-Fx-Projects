@@ -8,9 +8,13 @@ package tasktracker;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 /**
@@ -18,10 +22,28 @@ import javafx.stage.Stage;
  * @author aakar
  */
 public class TaskTracker extends Application {
-    
+    HBox modifyList;
+    VBox layout;
+    Button add,delete;
+    TextField item;
     @Override
     public void start(Stage primaryStage) {
-        Button btn = new Button();
+        modifyList = new HBox();
+        
+        add = new Button("Add");
+        delete = new Button("Delete");
+        item = new TextField();
+        modifyList.getChildren().addAll(add,delete,item);
+        
+        modifyList.setAlignment(Pos.BOTTOM_CENTER);
+      //  layout.getChildren().add(modifyList);
+        
+      
+      add.setOnAction(e -> {
+          System.out.println(item.getText());
+      });
+        
+       /* Button btn = new Button();
         btn.setText("Say 'Hello World'");
         btn.setOnAction(new EventHandler<ActionEvent>() {
             
@@ -32,11 +54,11 @@ public class TaskTracker extends Application {
         });
         
         StackPane root = new StackPane();
-        root.getChildren().add(btn);
+        root.getChildren().add(btn);*/
         
-        Scene scene = new Scene(root, 300, 250);
+        Scene scene = new Scene(modifyList, 300, 250);
         
-        primaryStage.setTitle("Hello World!");
+        primaryStage.setTitle("Item List");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
